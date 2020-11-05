@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary  fixed-top">
+    <div class="container">
+      <a class="navbar-brand ">
+      <%= link_to root_path, class:"navbar-item" do %>
+          <h1 class="title h5 text-white">Projekt</h1>
+        <% end  %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+           <% if user_signed_in? %>
+         <ul class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          New
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <li class="dropdown-item navdrop-link">  
+          <%#=link_to 'Project', new_project_path, class:"dropdown-item" %>
+        </li>
+        <li class="dropdown-item navdrop-link">  
+          <%#= link_to 'Team', new_team_path, class:"dropdown-item" %>
+          </li>
+        </div>
+        </ul>
+
+        <ul class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.name %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li class="dropdown-item navdrop-link">  
+            <%= link_to "Edite profile ", edit_user_registration_path, class:"navbar-item" %>
+            </li> 
+            <li class="dropdown-item navdrop-link">  
+            <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class:"navbar-link" %>
+            </li>          
+        </div>
+        </ul>
+   
+       
+        
+          <% else %>
+          <li>
+          <%= link_to "LOG IN", new_user_session_path, class:"navbar-link text-white p-3 " %>
+          </li>
+          <li>
+           <%= link_to "Sign up", new_user_registration_path, class:"navbar-link text-white "%>          </li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

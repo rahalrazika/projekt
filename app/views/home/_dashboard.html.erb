@@ -1,0 +1,64 @@
+<section class="container" >
+
+<p class="title h1 border-bottom pb3 text-center">HI <%= current_user.name %> 👋🏻 </p>
+ <div class="row">
+
+
+    <div class="col">
+       <div class="row border-right ph4">
+          <div class="col-3 ">
+             <h3 class="h5"> My Project <span class="badges"><%#= @projects.count %></span></h3>
+           </div>
+            <div class= "col-3 ">
+                <%= button_to new_project_path, class: "btn btn-primary" do%>
+                <span class="glyphicon glyphicon-plus"></span>
+                 <% end %>
+            </div>
+       </div>
+       <hr />
+
+       <% @projects.each do |project| %>
+         <div class="border-bottom pb4">
+            <P class="h4"><%= link_to project.name,project %></p>
+            <p class="text-muted"> Created by: <%= project.user.name %></p>
+          </div>
+        <% end %>
+
+    </div>
+
+
+    <div class="col">
+           <div class="row border-right ph4">
+          <div class="col-3 ">
+             <h3 class="h5"> My Teams <span class="badges"><%#= @teams.count %></span></h3>
+           </div>
+            <div class= "col-3 ">
+                <%= button_to new_team_path, class: "btn btn-primary" do%>
+                <span class="glyphicon glyphicon-plus"></span>
+                 <% end %>
+            </div>
+       </div>
+
+        <hr />
+       
+         <% @teams.each do |team| %>
+         <div class="border-bottom pb4">
+            <P class="h4"><%= link_to team.name,team %></p>
+            <span class="text-muted"><%= safe_join(team.user.map {|user| user.name}, ' ,')  %></span>
+          </div>
+        <% end %>
+    </div>
+
+
+    <div class="col">
+
+       <h3 class="h3">Activity</h3>
+			<hr />
+			<ul class="lists">
+				<%= render_activities(@activities) %>
+			</ul>
+    </div>
+
+
+ </div>
+</section 
